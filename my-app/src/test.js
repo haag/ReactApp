@@ -6,26 +6,41 @@ class Test extends Component{
         super()
 
         this.state = {
-            username: 'Me'
+            username: 'Me',
+            isToggleOn: true,
         }
-        
+        this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
     
     render() {
         return (
             <div>
                 Hello {this.state.username}
-                Change Name:
+                <div>
+                    Toggle: {this.state.toggle}
+                </div>
+                <div>
+                    Change Name:
                 <input 
-                type="text"
-                value={this.state.username}
-                onChange={e => this.handleChange(e.target.value)}
+                    type="text"
+                    value={this.state.username}
+                    onChange={this.handleChange}
                 />
                 </div>
+                <button onClick={this.handleClick}>
+                {this.state.isToggleOn ? 'ON' : 'OFF'}
+                </button>
+            </div>
         )
     }
     handleChange(e) {
-        this.setState({e})
+        this.setState({username: e.target.value})
+    }
+    handleClick() {
+        this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+        }))
     }
 }
 

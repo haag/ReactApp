@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import HelloWorld from "./basicComponent"
 import Test from "./test"
+import Toggle from "./toggle"
 
 import logo from './logo.svg';
 import './App.css';
@@ -11,6 +12,7 @@ class App extends Component {
     return (
       <div className="App">
       <Test />
+          <Toggle />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
