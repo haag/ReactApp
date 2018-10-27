@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+
+import HelloWorld from "./basicComponent"
+import Test from "./test"
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,6 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Test />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -18,6 +23,8 @@ class App extends Component {
             rel="noopener noreferrer"
           >
             Learn React
+            <HelloWorld />
+
           </a>
         </header>
       </div>
