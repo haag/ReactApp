@@ -28,6 +28,7 @@ class Test extends Component{
                     onChange={this.handleChange}
                 />
                 </div>
+                
                 <button onClick={this.handleClick}>
                 {this.state.isToggleOn ? 'ON' : 'OFF'}
                 </button>

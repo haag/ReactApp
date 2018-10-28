@@ -1,32 +1,28 @@
 import React, {Component} from 'react'
-import logo from './logo.svg';
+import Logo from "./logo"
 
 class Toggle extends Component{
-    constructor(props){
+    constructor(){
         super()
-
         this.state = {
-            toggle: true
+            toggle: false
         }
         this.handleClick = this.handleClick.bind(this)
     }
-    logo = <img src={logo} className="App-logo" alt="logo" />
+
+    handleClick(){
+        this.setState({
+            toggle: !this.state.toggle
+        })
+    }
+
     render(){
         return(
-            <div>
-                <button onClick={this.handleClick}>
-                {/* ~Press Here~ */}
-                {this.state.toggle ? 'ON' : 'OFF'}
-                </button>
-                {this.logo}
-                
+            <div className="LOGO" onClick={this.handleClick}>
+                {!this.state.toggle && <Logo />}
+                {this.state.toggle && "Turn Logo On"}
             </div>
         )
-    }
-    handleClick(){
-        this.setState(state => ({
-            toggle: !state.toggle
-        }))
     }
     
 }
