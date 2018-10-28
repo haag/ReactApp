@@ -7,42 +7,44 @@ class Test extends Component{
 
         this.state = {
             username: 'Me',
-            isToggleOn: true,
+            // isToggleOn: true,
         }
         this.handleChange = this.handleChange.bind(this)
-        this.handleClick = this.handleClick.bind(this)
+        // this.handleClick = this.handleClick.bind(this)
     }
-    
+    handleSubmit(e){
+        this.setState({ username: e.target.value })
+    }
     render() {
         return (
             <div>
                 Hello {this.state.username}
                 <div>
-                    Toggle: {this.state.toggle}
+                    {/* Toggle: {this.state.toggle} */}
                 </div>
                 <div>
                     Change Name:
-                <input 
+                <input onSubmit={this.handleSubmit}
                     type="text"
                     value={this.state.username}
                     onChange={this.handleChange}
                 />
                 </div>
                 
-                <button onClick={this.handleClick}>
+                {/* <button onClick={this.handleClick}>
                 {this.state.isToggleOn ? 'ON' : 'OFF'}
-                </button>
+                </button> */}
             </div>
         )
     }
     handleChange(e) {
         this.setState({username: e.target.value})
     }
-    handleClick() {
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }))
-    }
+    // handleClick() {
+    //     this.setState(state => ({
+    //         isToggleOn: !state.isToggleOn
+    //     }))
+    // }
 }
 
 export default Test

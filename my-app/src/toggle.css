@@ -1,0 +1,6 @@
+LOGO {
+    cursor: pointer;
+    border: 14px solid green;
+    background: rgb(255, 102, 0) !important;
+    font-size: 55px;
+}
