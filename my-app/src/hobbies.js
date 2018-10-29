@@ -11,41 +11,20 @@ class Hobby extends Component {
 
     componentDidMount(){
         this.hydrateStateWithLocalStorage()
-    }
 
-    updateInput(key,value){
-        this.setState({ [key]: value })
-        localStorage.setItem(key, value)
+        window.addEventListener(
+            "beforeunload", 
+            this.saveStateToLocalStorage.bind(this)
+        )
     }
-
-    addHobby(){
-        //NEW Hobby
-        const hobby = {
-            id: 1 + Math.random(),
-            value: this.state.hobby.slice()
+    componentWillUnmount() {
+        window.removeEventListener(
+            "beforeunload",
+            this.saveStateToLocalStorage.bind(this)
+            )
+            this.saveStateToLocalStorage()
         }
-        //copy current arr of hobbies
-        const hobbies = [...this.state.hobbies]
-
-        hobbies.push(hobby)
-
-        this.setState({
-            hobbies,
-            hobby: ""
-        })
-        localStorage.setItem("hobbies", JSON.stringify(hobbies))
-        localStorage.setItem("hobby", '')
         
-    }
-    
-    deleteHobby(id){
-        const hobbies = [...this.state.hobbies]
-        const updatedList = hobbies.filter(hobby => hobby.id !== id)
-        this.setState({
-            hobbies: updatedList
-        })
-        localStorage.setItem("hobbies", JSON.stringify(hobbies))
-    } 
 
     hydrateStateWithLocalStorage(){
         for(let key in this.state) {
@@ -62,6 +41,43 @@ class Hobby extends Component {
             }
         }
     }
+        updateInput(key,value){
+            this.setState({ [key]: value })
+        // localStorage.setItem(key, value)
+    }
+
+    saveStateToLocalStorage(){
+        for(let key in this.state) {
+            localStorage.setItem(key, JSON.stringify(this.state[key]))
+        }
+    }
+    addHobby(){
+        //NEW Hobby
+        const hobby = {
+            id: 1 + Math.random(),
+            value: this.state.hobby.slice()
+        }
+        //copy current arr of hobbies
+        const hobbies = [...this.state.hobbies]
+
+        hobbies.push(hobby)
+
+        this.setState({
+            hobbies,
+            hobby: ""
+        })
+        // localStorage.setItem("hobbies", JSON.stringify(hobbies))
+        // localStorage.setItem("hobby", '')
+    }
+    
+    deleteHobby(id){
+        const hobbies = [...this.state.hobbies]
+        const updatedList = hobbies.filter(hobby => hobby.id !== id)
+        this.setState({
+            hobbies: updatedList
+        })
+        // localStorage.setItem("hobbies", JSON.stringify(hobbies))
+    } 
 
     render() {
         return(
