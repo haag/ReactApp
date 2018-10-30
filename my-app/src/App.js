@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import SimpleStorage from "react-simple-storage"
 
 import HelloWorld from "./basicComponent"
 import Test from "./test"

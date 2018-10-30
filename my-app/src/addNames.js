@@ -1,5 +1,4 @@
 import React from 'react'
-// import SimpleStorage from "react-simple-storage"
 
 
 class Names extends React.Component {
@@ -31,7 +30,6 @@ class Names extends React.Component {
     render(){
         return(
             <div>
-             {/* <SimpleStorage parent={this} /> */}
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <label>
                         Name: 
